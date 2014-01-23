@@ -1,0 +1,44 @@
+<?php
+/**
+* @file
+* A block module that displays random text
+*/
+
+function lar_test_block_info() {
+	$blocks['lar_test_block'] = array(
+		// The name that will appear in the block list.
+		'info' => t('LAR Test Block'),
+		// Default setting.
+		'cache' => DRUPAL_CACHE_PER_ROLE,
+	);
+	return $blocks;
+}
+
+/**
+* Implements hook_block_view().
+*
+* Prepares the contents of the block.
+*/
+function lar_test_block_view($delta = '') {
+	switch ($delta) {
+		case 'lar_test_block':
+			$block['subject'] = t('Stuff');
+
+			$items = array(
+				array(
+					'data' => l('one', 'node/one'),
+				),
+				array(
+					'data' => l('two', 'node/two'),
+				),
+			);
+
+			// Pass data through theme function.
+			$block['content'] = theme('item_list', array(
+				'items' => $items
+			));
+		return $block;
+	}
+
+	//return array("bla");
+}

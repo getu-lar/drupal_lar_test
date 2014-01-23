@@ -1,0 +1,4 @@
+name = LAR Test Module
+description = Just a dummy
+core = 7.x
+version = 7.x-1.0
